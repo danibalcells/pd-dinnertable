@@ -1,0 +1,4 @@
+# Misc
+/.DS_Store
+# Ignore the sounds directory, i.e. do not upload WAV to repo
+/sounds/
