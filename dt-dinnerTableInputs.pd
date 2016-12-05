@@ -1,4 +1,14 @@
-#N canvas 0 22 450 300 10;
+#N canvas -10 14 683 691 10;
 #X obj 263 365 outlet~ piezoInput;
-#X obj 75 365 outlet~ pickupInput;
+#X obj 126 364 outlet~ pickupInput;
 #X text 75 34 TO DO: ADC to receive DinnerTable signals in PD;
+#X obj 179 132 readsf~;
+#X msg 179 103 open sounds/dinnertable.wav \, 1;
+#X obj 612 71 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 172 284 lop~ 2000;
+#X connect 3 0 6 0;
+#X connect 3 1 5 0;
+#X connect 4 0 3 0;
+#X connect 5 0 4 0;
+#X connect 6 0 1 0;
