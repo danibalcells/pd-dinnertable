@@ -1,4 +1,4 @@
-#N canvas 50 14 531 370 10;
+#N canvas 4 23 638 755 10;
 #X obj 46 57 inlet spectralCentroid;
 #X obj 200 58 inlet someOtherFeature;
 #X obj 344 60 inlet anotherOne;
@@ -9,4 +9,9 @@
 #X obj 589 60 inlet piezoFeature2;
 #X text 74 24 TODO: what parameters should we control? what mappings
 should we use?;
-#X connect 1 0 3 0;
+#X floatatom 209 86 5 0 0 0 - - -;
+#X floatatom 183 218 5 0 0 0 - - -;
+#X obj 217 125 dt-linearMap 0 1 4 10;
+#X connect 1 0 9 0;
+#X connect 9 0 11 0;
+#X connect 11 0 10 0;
