@@ -1,0 +1,11 @@
+#N canvas 0 22 450 300 10;
+#X obj 46 57 inlet spectralCentroid;
+#X obj 200 58 inlet someOtherFeature;
+#X obj 344 60 inlet anotherOne;
+#X obj 33 268 outlet readSpeed;
+#X obj 154 268 outlet playSpeed;
+#X obj 274 268 outlet somethingElse;
+#X obj 455 60 inlet piezoFeature1;
+#X obj 589 60 inlet piezoFeature2;
+#X text 74 24 TODO: what parameters should we control? what mappings
+should we use?;

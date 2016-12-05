@@ -1,0 +1,5 @@
+#N canvas 0 22 450 300 10;
+#X obj 56 30 inlet~ piezoInput;
+#X obj 70 257 outlet feature1;
+#X obj 202 255 outlet feature2;
+#X text 192 30 TODO: what features should we extract?;

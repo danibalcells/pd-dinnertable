@@ -1,0 +1,6 @@
+#N canvas 0 22 450 300 10;
+#X obj 54 23 inlet~ piezoInput;
+#X obj 54 221 outlet class1Onset;
+#X obj 183 222 outlet class2Onset;
+#X obj 312 221 outlet class3Onset;
+#X text 179 24 TODO: TimbreID classification \, onset detection;

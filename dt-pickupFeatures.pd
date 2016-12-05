@@ -1,0 +1,6 @@
+#N canvas 804 144 450 300 10;
+#X obj 52 39 inlet~ pickupInput;
+#X obj 22 224 outlet spectralCentroid;
+#X obj 174 225 outlet someOtherFeature;
+#X obj 323 225 outlet anotherOne;
+#X text 185 37 TODO: what features?;
