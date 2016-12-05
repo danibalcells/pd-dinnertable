@@ -9,4 +9,3 @@
 #X obj 589 60 inlet piezoFeature2;
 #X text 74 24 TODO: what parameters should we control? what mappings
 should we use?;
-#X obj 128 148 + 1;
