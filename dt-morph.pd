@@ -1,0 +1,6 @@
+#N canvas 4 23 638 755 10;
+#X obj 54 152 block~ 1024;
+#X obj 128 -158 inlet~ sound1;
+#X obj 238 -158 inlet~ sound2;
+#X obj 247 129 outlet~ morphOutput;
+#X connect 1 0 3 0;
