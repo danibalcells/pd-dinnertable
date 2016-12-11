@@ -2,13 +2,13 @@
 #X obj 128 -158 inlet~ sound1;
 #X obj 238 -158 inlet~ sound2;
 #X obj 247 129 outlet~ morphOutput;
-#N canvas 334 41 450 300 processing-block 0;
+#N canvas 334 41 450 300 processing-block 1;
 #X obj 102 119 inlet~ wet;
 #X obj 193 118 inlet~ dry;
 #X obj 108 164 xsyn~ 10;
 #X obj 105 220 outlet~;
 #X obj 233 185 block~ 2048;
-#X obj 105 196 *~ 130;
+#X obj 105 196 *~ 100;
 #X connect 0 0 2 0;
 #X connect 1 0 2 1;
 #X connect 2 0 5 0;
