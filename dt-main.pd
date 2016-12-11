@@ -1,8 +1,4 @@
-#N canvas 642 23 638 755 10;
-#X declare -lib zexy;
-#X declare -lib zexy;
-#X declare -lib zexy;
-#X declare -lib zexy;
+#N canvas 673 14 683 691 10;
 #X obj 169 165 dt-pickupFeatures;
 #X obj 288 163 dt-piezoFeatures;
 #X obj 436 165 dt-onsetDetection;
@@ -19,17 +15,20 @@
 #X obj 187 139 s~ pickupInput;
 #X obj 361 310 hsl 128 15 1 0 0 0 empty empty empty -2 -8 0 10 -262144
 -1 -1 11430 1;
-#X floatatom 362 347 5 0 0 0 - - -;
-#X floatatom 266 408 5 0 0 0 - - -;
+#X floatatom 362 347 5 0 0 0 - - -, f 5;
+#X floatatom 266 408 5 0 0 0 - - -, f 5;
 #X obj 109 418 dt-reverb;
+#X obj 342 252 dt-trigger;
 #X connect 0 0 4 0;
 #X connect 0 1 4 1;
 #X connect 0 2 4 2;
 #X connect 0 3 4 3;
 #X connect 0 4 4 4;
 #X connect 1 0 17 2;
+#X connect 1 0 18 0;
 #X connect 1 1 4 6;
 #X connect 1 1 17 1;
+#X connect 1 1 18 1;
 #X connect 3 0 0 0;
 #X connect 3 0 13 0;
 #X connect 3 1 1 0;
@@ -49,3 +48,4 @@
 #X connect 14 0 15 0;
 #X connect 17 0 10 0;
 #X connect 17 0 10 1;
+#X connect 18 0 17 0;
