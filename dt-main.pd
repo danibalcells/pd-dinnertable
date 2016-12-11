@@ -1,4 +1,4 @@
-#N canvas 554 23 683 691 10;
+#N canvas 642 23 638 755 10;
 #X declare -lib zexy;
 #X declare -lib zexy;
 #X declare -lib zexy;
@@ -32,6 +32,7 @@
 #X connect 1 1 13 1;
 #X connect 1 1 14 1;
 #X connect 1 1 15 1;
+#X connect 1 2 14 2;
 #X connect 2 0 0 0;
 #X connect 2 0 12 0;
 #X connect 2 1 1 0;

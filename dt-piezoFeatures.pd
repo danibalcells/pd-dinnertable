@@ -1,23 +1,20 @@
-#N canvas 0 22 1276 691 10;
+#N canvas 4 23 638 755 10;
 #X declare -lib zexy;
 #X obj 146 -99 inlet~ piezoInput;
 #X obj 478 407 outlet feature1;
-#X obj 145 407 outlet feature2;
+#X obj 145 430 outlet feature2;
 #X text 350 -86 TODO: what features should we extract?;
 #X obj 673 -70 metro 20;
-#N canvas 0 22 1276 691 mfccs 1;
+#N canvas 0 22 1276 691 mfccs 0;
 #X obj 473 356 mfcc~;
 #X obj 500 386 t l l;
 #X obj 396 414 list prepend 0;
 #N canvas 423 174 450 300 (subpatch) 0;
-#X array mfcc-graph2 38 float 3;
-#A 0 1 -0.152354 0.359455 0.117858 0.177314 0.0922598 0.0448404 0.0467855
--0.0419427 0.0163463 -0.0971877 0.0128618 -0.109601 -0.0210579 -0.0410822
--0.00106616 -0.0399853 0.025889 -0.00341957 0.0449603 0.0241218 0.0384722
-0.0612471 0.0617915 0.0623983 0.0697799 0.0651293 0.0492857 0.0336698
-0.0707933 0.00547796 0.0207051 -0.0230605 -0.00760279 -0.000856378
--0.0306968 -0.0351346 -0.011999;
-#X coords 0 1 38 -1 200 140 1;
+#X array mfcc-graph2 20 float 3;
+#A 0 1 0.511532 0.560854 0.283867 0.193165 0.0967179 0.0444635 0.0154842
+-0.0292498 -0.0378143 -0.0760412 -0.074264 -0.111906 -0.102458 -0.143404
+-0.12542 -0.135472 -0.0756933 -0.0712118 -0.0341256;
+#X coords 0 1 20 -1 200 140 1;
 #X restore 109 160 graph;
 #X obj 616 356 list length;
 #X obj 616 378 change;
@@ -29,7 +26,7 @@
 #X floatatom 333 184 5 0 0 0 - - -;
 #X obj 667 252 tabread mfcc-graph2;
 #X obj 500 446 s mfcc-graph2;
-#X msg 616 401 \; mfcc-graph2 resize 10 \;;
+#X msg 616 401 \; mfcc-graph2 resize 20 \;;
 #X connect 0 0 1 0;
 #X connect 1 0 2 0;
 #X connect 1 1 4 0;
@@ -96,16 +93,16 @@
 #X coords 0 -1 1 1 122 106 1 100 100;
 #X restore 1153 82 pd brightness;
 #X obj 1051 215 vsl 15 128 0 2000 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 12 1;
+-1 -1 33 1;
 #X obj 1182 215 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 7609 1;
+-1 -1 3592 1;
 #N canvas 0 22 1276 691 mfccs 0;
 #X obj 711 432 list prepend 0;
 #N canvas 423 174 450 300 (subpatch) 0;
 #X array bark-graph 38 float 3;
-#A 0 0.0160669 0.0631342 0.22286 0 0.0283228 0.0162522 0 0.111281 0.171985
-0 0 0 0 0 0 0 0 0.00307382 0.0527284 0.0755868 0.301342 0 0.0111014
-0.0290836 0.0785985 0 0 0.064222 0 0 0 0 0 0 0 0 0 0;
+#A 0 0 0 0.0645194 0.133666 0.631752 0.141526 0.0149654 0 0 0 0.137004
+0 0 0.0537817 0.01174 0 0 0.17361 0.0443533 0.0514961 0.0902609 0.0165766
+0 0 0.0678792 0.109184 0 0 0 0 0 0 0 0 0 0 0 0;
 #X coords 0 1 38 -1 200 140 1;
 #X restore 109 160 graph;
 #X obj 476 115 inlet~;
@@ -138,11 +135,28 @@
 #X coords 0 -1 1 1 292 236 1 100 100;
 #X restore 477 77 pd mfccs;
 #X msg 466 19 6;
+#X obj 844 259 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 867 257 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+1;
+#X msg 930 235 clear;
+#X obj 797 293 dt-percClusters;
+#X floatatom 788 343 5 0 0 0 - - -;
+#X obj 796 436 outlet percType;
+#X msg 918 259 forget;
+#X msg 929 210 cluster 3;
+#X msg 914 285 write perc-classes.db;
+#X msg 910 333 read perc-classes.db;
+#X obj 935 314 loadbang;
+#X msg 839 229 0;
+#X msg 871 230 1;
+#X obj 847 207 loadbang;
 #X connect 0 0 5 0;
 #X connect 0 0 7 0;
 #X connect 0 0 8 0;
 #X connect 0 0 9 0;
 #X connect 0 0 12 0;
+#X connect 0 0 17 0;
 #X connect 4 0 5 2;
 #X connect 4 0 7 1;
 #X connect 4 0 8 1;
@@ -153,5 +167,20 @@
 #X connect 9 0 11 0;
 #X connect 11 0 2 0;
 #X connect 12 0 1 0;
+#X connect 12 0 17 1;
 #X connect 13 0 5 1;
 #X connect 13 0 12 2;
+#X connect 14 0 17 2;
+#X connect 15 0 17 3;
+#X connect 16 0 17 4;
+#X connect 17 0 18 0;
+#X connect 18 0 19 0;
+#X connect 20 0 17 4;
+#X connect 21 0 17 4;
+#X connect 22 0 17 4;
+#X connect 23 0 17 4;
+#X connect 24 0 23 0;
+#X connect 25 0 14 0;
+#X connect 26 0 15 0;
+#X connect 27 0 25 0;
+#X connect 27 0 26 0;
