@@ -1,4 +1,4 @@
-#N canvas 0 24 1366 719 10;
+#N canvas 0 24 1360 719 10;
 #X obj 52 39 inlet~ pickupInput;
 #X obj 49 463 outlet spectralCentroid;
 #X obj 587 51 metro 20;
@@ -9,11 +9,11 @@
 #X obj 500 446 s mfcc-graph;
 #N canvas 423 174 450 300 (subpatch) 0;
 #X array mfcc-graph 38 float 3 black black;
-#A 0 1 0.775017 0.583482 0.641149 0.69043 0.590029 0.523308 0.527795
-0.525581 0.469313 0.428344 0.402043 0.394449 0.383377 0.353571 0.31228
-0.286557 0.2557 0.222367 0.201834 0.182302 0.155945 0.129026 0.111244
-0.0977449 0.0708364 0.0406375 0.0237136 0.0163911 0.011383 0.00189053
--0.00658392 -0.0051603 0.00608327 0.00832659 0.00572559 0.011684 0.0156394
+#A 0 1 0.450142 0.0163833 0.210878 0.279094 0.147934 0.144913 0.194751
+0.173327 0.149167 0.193529 0.222709 0.205625 0.175713 0.15973 0.128135
+0.108262 0.116278 0.116806 0.106535 0.106104 0.11898 0.136355 0.14269
+0.128825 0.0921144 0.0669512 0.0474254 0.0298526 0.0253428 0.0279726
+0.00681247 0.00066204 0.0248208 0.0447561 0.0388262 0.0302192 0.0202755
 ;
 #X coords 0 1 38 -1 200 140 1;
 #X restore 109 160 graph;
@@ -42,27 +42,28 @@
 #X connect 14 0 11 0;
 #X coords 0 -1 1 1 292 236 1 100 100;
 #X restore 238 175 pd mfccs;
-#X msg 380 140 3;
 #X obj 586 6 loadbang;
-#N canvas 0 24 1366 719 zcr 0;
+#N canvas 0 24 1360 719 zcr 0;
 #X obj 476 115 inlet~;
 #X obj 640 120 inlet;
 #X obj 142 386 outlet;
 #X floatatom 137 164 5 0 0 0 - - -, f 5;
-#X obj 484 181 lop~ 150;
 #X obj 510 319 zeroCrossing~ 1024;
-#X floatatom 527 385 5 0 0 0 - - -, f 5;
-#X obj 527 414 / 2048;
-#X obj 527 359 * 44100;
+#X floatatom 522 388 5 0 0 0 - - -, f 5;
+#X obj 522 417 / 2048;
+#X obj 522 362 * 44100;
 #X text 125 132 FCR based F0;
-#X connect 0 0 4 0;
-#X connect 1 0 5 0;
+#X obj 484 181 lop~ 200;
+#X obj 522 450 median_n 10;
+#X connect 0 0 9 0;
+#X connect 1 0 4 0;
 #X connect 3 0 2 0;
-#X connect 4 0 5 0;
-#X connect 5 0 8 0;
-#X connect 6 0 7 0;
-#X connect 7 0 3 0;
-#X connect 8 0 6 0;
+#X connect 4 0 7 0;
+#X connect 5 0 6 0;
+#X connect 6 0 10 0;
+#X connect 7 0 5 0;
+#X connect 9 0 4 0;
+#X connect 10 0 3 0;
 #X coords 0 -1 1 1 122 106 1 100 100;
 #X restore 577 182 pd zcr;
 #X obj 581 463 outlet zrc;
@@ -108,21 +109,31 @@
 #X connect 4 0 3 0;
 #X coords 0 -1 1 1 122 106 1 100 100;
 #X restore 881 179 pd brightness;
+#X msg 380 140 2;
+#X obj 779 312 vsl 15 128 0 2000 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 102 1;
+#X obj 910 312 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 5847 1;
+#X obj 94 312 vsl 15 128 0 5000 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 4908 1;
 #X connect 0 0 3 0;
+#X connect 0 0 8 0;
+#X connect 0 0 5 0;
 #X connect 0 0 9 0;
-#X connect 0 0 6 0;
-#X connect 0 0 10 0;
-#X connect 0 0 13 0;
+#X connect 0 0 12 0;
 #X connect 2 0 3 2;
+#X connect 2 0 8 1;
+#X connect 2 0 5 1;
 #X connect 2 0 9 1;
-#X connect 2 0 6 1;
-#X connect 2 0 10 1;
-#X connect 2 0 13 1;
-#X connect 3 0 8 0;
-#X connect 4 0 3 1;
-#X connect 5 0 2 0;
-#X connect 5 0 4 0;
-#X connect 6 0 7 0;
-#X connect 9 0 1 0;
-#X connect 10 0 11 0;
-#X connect 13 0 12 0;
+#X connect 2 0 12 1;
+#X connect 3 0 7 0;
+#X connect 4 0 2 0;
+#X connect 4 0 13 0;
+#X connect 5 0 6 0;
+#X connect 8 0 1 0;
+#X connect 8 0 16 0;
+#X connect 9 0 10 0;
+#X connect 9 0 14 0;
+#X connect 12 0 11 0;
+#X connect 12 0 15 0;
+#X connect 13 0 3 1;
