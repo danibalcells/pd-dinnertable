@@ -1,8 +1,7 @@
-#N canvas 390 186 1360 719 10;
-#X declare -lib zexy;
+#N canvas -10 14 1360 691 10;
 #X obj 146 -99 inlet~ piezoInput;
-#X obj 413 393 outlet feature1;
-#X obj 853 424 outlet feature2;
+#X obj 478 407 outlet feature1;
+#X obj 145 407 outlet feature2;
 #X text 350 -86 TODO: what features should we extract?;
 #X obj 673 -70 metro 20;
 #N canvas 0 24 1360 719 mfccs 0;
@@ -10,13 +9,13 @@
 #X obj 500 386 t l l;
 #X obj 396 414 list prepend 0;
 #N canvas 423 174 450 300 (subpatch) 0;
-#X array \$0mfcc-graph 38 float 3;
-#A 0 1 -0.515691 0.196064 -0.0775311 0.0826189 -0.0394266 0.0667799
--0.02068 0.0492563 -0.0110178 0.0481827 0.0165574 -0.00782367 0.013147
-0.0324281 0.000344001 0.0749551 -0.00967018 0.0306674 -0.00899954 0.0331206
-0.00417334 0.0291217 0.00211132 0.014322 -0.00332927 0.0209784 -0.00724618
-0.0223892 0.0165263 -0.0215026 0.0293523 0.000465443 -0.000283407 -0.00676939
--0.00210667 0.0110076 0.0156122;
+#X array \$0mfcc-graph 38 float 3 black black;
+#A 0 1 -0.12171 -0.0392803 0.108871 -0.28336 0.0182036 -0.0611449 -0.0772201
+0.150657 -0.0986214 0.0360416 0.0395692 -0.0710107 0.0978872 0.0223848
+0.00965211 0.0697234 -0.099271 -0.0142177 -0.0220786 -0.0795075 0.0447689
+0.031368 0.0282198 0.0609655 -0.0412943 -0.000289145 0.0251475 -0.0348949
+0.0548215 0.0144702 -0.0309306 -0.0100057 -0.0168279 0.0153207 0.0307727
+0.0268204 0.0355844;
 #X coords 0 1 38 -1 200 140 1;
 #X restore 109 160 graph;
 #X obj 616 356 list length;
@@ -25,9 +24,9 @@
 #X obj 640 120 inlet;
 #X obj 562 114 inlet;
 #X obj 667 252 tabread mfcc-graph;
-#X floatatom 339 281 5 0 0 0 - - -;
+#X floatatom 339 281 5 0 0 0 - - -, f 5;
 #X obj 340 368 outlet;
-#X floatatom 333 184 5 0 0 0 - - -;
+#X floatatom 333 184 5 0 0 0 - - -, f 5;
 #X obj 500 446 s \$0mfcc-graph;
 #X msg 616 401 \; \$0mfcc-graph resize \$1 \;;
 #X connect 0 0 1 0;
@@ -50,9 +49,9 @@
 #X obj 476 115 inlet~;
 #X obj 640 120 inlet;
 #X obj 142 386 outlet;
-#X floatatom 137 164 5 0 0 0 - - -;
+#X floatatom 137 164 5 0 0 0 - - -, f 5;
 #X obj 510 319 zeroCrossing~ 1024;
-#X floatatom 522 388 5 0 0 0 - - -;
+#X floatatom 522 388 5 0 0 0 - - -, f 5;
 #X obj 522 417 / 2048;
 #X obj 522 362 * 44100;
 #X text 125 132 FCR based F0;
@@ -73,7 +72,7 @@
 #X obj 476 115 inlet~;
 #X obj 640 120 inlet;
 #X obj 137 252 outlet;
-#X floatatom 137 164 5 0 0 0 - - -;
+#X floatatom 137 164 5 0 0 0 - - -, f 5;
 #X text 126 120 kurtosis;
 #X obj 510 319 specKurtosis~;
 #X connect 0 0 5 0;
@@ -86,7 +85,7 @@
 #X obj 232 34 inlet~;
 #X obj 396 39 inlet;
 #X obj 137 252 outlet;
-#X floatatom 137 164 5 0 0 0 - - -;
+#X floatatom 137 164 5 0 0 0 - - -, f 5;
 #X obj 266 238 specBrightness~;
 #X text 126 120 Brightness;
 #X connect 0 0 4 0;
@@ -97,28 +96,29 @@
 #X restore 1153 82 pd brightness;
 #X msg 466 19 2;
 #X obj 1051 215 vsl 15 128 0 2000 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 11 1;
+-1 -1 21 1;
 #X obj 1182 215 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 10869 1;
-#N canvas 0 24 1360 719 mfccs 0;
+-1 -1 9426 1;
+#N canvas -10 14 1360 691 mfccs 0;
 #X obj 711 432 list prepend 0;
 #N canvas 423 174 450 300 (subpatch) 0;
-#X array bark-graph 38 float 3;
-#A 0 0.340907 0.069551 0.117623 0.300351 0.119032 0 0 0.215859 0.235893
-0.104567 0 0 0 0 0 0 0 0 0 0 0.00430579 0 0 0 0 0 0.0324988 0 0 0 0
-0 0 0 0 0 0 0.0081078;
+#X array bark-graph 38 float 3 black black;
+#A 0 0.169607 0.121364 0 0 0.680789 0.0922361 0 0.0553002 0 0 0.138985
+0.0704267 0.0177738 0.0933608 0.10276 0.0224996 0.0551869 0.00116185
+0.0846414 0.0698916 0.0661608 0.12123 0.00138566 0 0 0.0810456 0.219257
+0.0338569 0.00971743 0 0.0245778 0 0 0 0 0 0 0.013262;
 #X coords 0 1 38 -1 200 140 1;
 #X restore 109 160 graph;
 #X obj 476 115 inlet~;
 #X obj 640 120 inlet;
 #X obj 562 114 inlet;
 #X obj 503 520 outlet;
-#X floatatom 676 180 5 0 0 0 - - -;
+#X floatatom 676 180 5 0 0 0 - - -, f 5;
 #X obj 503 317 bark~;
 #X obj 325 205 bng 42 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
 #X obj 706 489 s bark-graph;
-#X floatatom 543 431 5 0 0 0 - - -;
+#X floatatom 543 431 5 0 0 0 - - -, f 5;
 #X text 328 171 onset;
 #X msg 812 199 mask 4 0.75;
 #X msg 832 239 debounce 100;
@@ -147,6 +147,7 @@
 #X connect 4 0 7 1;
 #X connect 4 0 8 1;
 #X connect 4 0 9 1;
+#X connect 5 0 2 0;
 #X connect 6 0 4 0;
 #X connect 6 0 10 0;
 #X connect 8 0 11 0;

@@ -1,0 +1,4 @@
+#N canvas 413 164 450 300 10;
+#X obj 57 29 inlet trigger;
+#X obj 160 28 inlet envelope;
+#X obj 272 31 inlet mfcc;
