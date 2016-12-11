@@ -45,7 +45,7 @@ should we use?;
 #X obj 880 539 outlet drywet;
 #X obj 878 497 median_n 10;
 #X obj 537 370 median_n 10;
-#X obj 873 419 dt-linearMap 64 250 0.1 0.8;
+#X obj 873 419 dt-linearMap 64 250 0.1 0.6;
 #X connect 0 0 8 0;
 #X connect 6 0 35 0;
 #X connect 7 0 2 0;
